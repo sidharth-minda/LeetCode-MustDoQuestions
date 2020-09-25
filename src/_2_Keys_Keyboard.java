@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class _2KeysKeyboard  {
+public class _2_Keys_Keyboard {
 
     public static int minSteps(int n) {
         int dp[] = new int[1001];
