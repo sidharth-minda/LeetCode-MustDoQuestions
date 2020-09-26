@@ -13,19 +13,20 @@ Output: 2
 Explanation: 13 = 4 + 9.
  */
 
-public class Perfect_Squares {
-    public int numSquares(int n) {
-        int size = (int)Math.sqrt(n);
-        int dp[] = new int[n+1];
-        dp[1] = 1;
-        for(int i=2;i<=n;i++) {
-            dp[i] = i;
-            for(int j=2;j<=size;j++) {
-                if(j*j > i)
-                    break;
-                dp[i] = Math.min(dp[i], dp[i-j*j] + 1);
+import java.util.Arrays;
+
+class Perfect_Squares {
+    public int numSquares(int sum) {
+        int num = (int) Math.sqrt(sum);
+        int dp[] = new int[sum+1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for(int i=1;i<=num;i++) {
+            for(int j=1;j<=sum;j++) {
+                if(j>=i*i)
+                    dp[j] = Math.min(dp[j], dp[j-i*i] + 1);
             }
         }
-        return dp[n];
+        return dp[sum];
     }
 }
